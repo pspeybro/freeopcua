@@ -95,7 +95,7 @@ namespace OpcUa
     return GetNode(ObjectID::ObjectsFolder);
   }
 
-  Subscription OPCUAServer::CreateSubscription(uint period, SubscriptionClient& callback)
+  Subscription OPCUAServer::CreateSubscription(uint32_t period, SubscriptionClient& callback)
   {
     SubscriptionParameters params;
     params.RequestedPublishingInterval = period;

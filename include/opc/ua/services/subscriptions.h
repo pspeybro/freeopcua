@@ -16,6 +16,9 @@
 #include <opc/ua/protocol/subscriptions.h>
 #include <opc/ua/protocol/monitored_items.h>
 
+//otherwise VS2013 complains about std::function
+#include <functional>
+
 namespace OpcUa
 {
   namespace Remote

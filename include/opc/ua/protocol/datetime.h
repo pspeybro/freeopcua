@@ -46,7 +46,8 @@ namespace OpcUa
   };
 
   DateTime CurrentDateTime();
-  DateTime ToDateTime(time_t t, unsigned usec = 0);
+  //DateTime ToDateTime(time_t t, unsigned usec = 0);
+  DateTime ToDateTime(long long usec);
   time_t ToTimeT(DateTime dateTime);
 
   typedef double Duration; // Time duration in miliseconds.

@@ -126,6 +126,7 @@ Common::Configuration Common::ParseConfigurationFiles(const std::string& directo
     if  (entry.path().filename().extension() == ".conf")
     {
       std::cout << "Parsing config file: " << entry.path().native() << std::endl;
+	  //TODO: how to fix in a portable way that correctly handles windows filenames
       Common::Configuration tmp = Common::ParseConfiguration(entry.path().native());
       configuration.Modules.insert(configuration.Modules.end(), tmp.Modules.begin(), tmp.Modules.end());
       configuration.Parameters.Groups.insert(configuration.Parameters.Groups.end(), tmp.Parameters.Groups.begin(), tmp.Parameters.Groups.end());

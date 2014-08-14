@@ -128,7 +128,7 @@ namespace OpcUa
     }
 
     std::vector<uint32_t> mids;
-    uint i = 0;
+	uint32_t i = 0;
     for (const auto& res : results)
     {
       CheckStatusCode(res.Status);
@@ -142,7 +142,8 @@ namespace OpcUa
 
   void Subscription::UnSubscribe(uint32_t handle)
   {
-    return UnSubscribe(std::vector<uint32_t>({handle}));
+    //TODO: verify if this change is correct (original:  return UnSubscribe(std::vector<uint32_t>({handle}));
+    return UnSubscribe(std::vector<uint32_t>(1,handle));
   }
 
   void Subscription::UnSubscribe(std::vector<uint32_t> handles) 

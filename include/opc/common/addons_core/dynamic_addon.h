@@ -13,7 +13,12 @@
 
 #include <opc/common/addons_core/addon.h>
 
-extern "C" Common::Addon::UniquePtr CreateAddon();
+#if (_MSC_VER == 1800) //not sure this will work, will probably give issues with linking?
+	Common::Addon::UniquePtr CreateAddon();
+#else
+	extern "C" Common::Addon::UniquePtr CreateAddon();
+#endif
+
 
 typedef Common::Addon::UniquePtr (*CreateAddonFunc)();
 

@@ -24,12 +24,16 @@
 
 #include <iostream>
 
+#include <vector>
+typedef std::vector<int> Vector;
+
 namespace
 {
 
   using namespace OpcUa;
   using namespace OpcUa::Binary;
 
+  
 
   #define ApplyToVariantValue(type, var, func, secondParam) \
   { \
@@ -189,28 +193,29 @@ namespace
 
 namespace OpcUa
 {
-
+	//VS2013 update 3 has incomplete implementation http://msdn.microsoft.com/en-us/library/dn793970.aspx
+	//This form generates Error C2797: VariantValue::VariantValue(uint64_t val) : UInt64{val} {}
     VariantValue::VariantValue(bool val) : Boolean(1, val) {}
-    VariantValue::VariantValue(int8_t val) : SByte{val} {}
-    VariantValue::VariantValue(uint8_t val) :  Byte{val} {}
-    VariantValue::VariantValue(int16_t val) : Int16{val} {}
-    VariantValue::VariantValue(uint16_t val) : UInt16{val} {}
-    VariantValue::VariantValue(int32_t val) : Int32{val} {}
-    VariantValue::VariantValue(uint32_t val) : UInt32{val} {}
-    VariantValue::VariantValue(int64_t val) : Int64{val} {}
-    VariantValue::VariantValue(uint64_t val) : UInt64{val} {}
-    VariantValue::VariantValue(float val) : Float{val} {}
-    VariantValue::VariantValue(double val) : Double{val} {}
-    VariantValue::VariantValue(StatusCode val) : Statuses{val} {}
-    VariantValue::VariantValue(const std::string& val) : String{val} {}
-    VariantValue::VariantValue(const ByteString& val) : ByteStrings{val} {}
-    VariantValue::VariantValue(const DateTime& val) : Time{val} {}
-    VariantValue::VariantValue(const Guid& val) : Guids{val} {}
-    VariantValue::VariantValue(const NodeID& val) : Node{val} {}
-    VariantValue::VariantValue(const QualifiedName& val) : Name{val} {}
-    VariantValue::VariantValue(const LocalizedText& val) : Text{val} {}
-    VariantValue::VariantValue(const DataValue& val) : Value{val} {}
-    VariantValue::VariantValue(const DiagnosticInfo& val) : Diagnostic{val} {}
+    VariantValue::VariantValue(int8_t val) : SByte(1,val) {}
+    VariantValue::VariantValue(uint8_t val) :  Byte(1,val) {}
+    VariantValue::VariantValue(int16_t val) : Int16(1,val) {}
+    VariantValue::VariantValue(uint16_t val) : UInt16(1,val) {}
+    VariantValue::VariantValue(int32_t val) : Int32(1,val) {}
+    VariantValue::VariantValue(uint32_t val) : UInt32(1,val) {}
+    VariantValue::VariantValue(int64_t val) : Int64(1,val) {}
+    VariantValue::VariantValue(uint64_t val) : UInt64(1,val) {}
+    VariantValue::VariantValue(float val) : Float(1,val) {}
+    VariantValue::VariantValue(double val) : Double(1,val) {}
+    VariantValue::VariantValue(StatusCode val) : Statuses(1,val) {}
+    VariantValue::VariantValue(const std::string& val) : String(1,val) {}
+	VariantValue::VariantValue(const ByteString& val) : ByteStrings(1, val) {}
+	VariantValue::VariantValue(const DateTime& val) : Time(1, val) {}
+	VariantValue::VariantValue(const Guid& val) : Guids(1, val) {}
+	VariantValue::VariantValue(const NodeID& val) : Node(1, val) {}
+	VariantValue::VariantValue(const QualifiedName& val) : Name(1, val) {}
+	VariantValue::VariantValue(const LocalizedText& val) : Text(1, val) {}
+	VariantValue::VariantValue(const DataValue& val) : Value(1, val) {}
+    VariantValue::VariantValue(const DiagnosticInfo& val) : Diagnostic(1,val) {}
 
     VariantValue::VariantValue(const std::vector<bool>& val) : Boolean(val) {}
     VariantValue::VariantValue(const std::vector<int8_t>& val) : SByte(val) {}
@@ -226,7 +231,7 @@ namespace OpcUa
     VariantValue::VariantValue(const std::vector<StatusCode>& val) : Statuses(val) {}
     VariantValue::VariantValue(const std::vector<std::string>& val) : String(val) {}
     VariantValue::VariantValue(const std::vector<ByteString>& val) : ByteStrings(val) {}
-    VariantValue::VariantValue(const std::vector<DateTime>& val) : Time{val} {}
+    VariantValue::VariantValue(const std::vector<DateTime>& val) : Time(val) {}
     VariantValue::VariantValue(const std::vector<Guid>& val) : Guids(val) {}
     VariantValue::VariantValue(const std::vector<NodeID>& val) : Node(val) {}
     VariantValue::VariantValue(const std::vector<QualifiedName>& val) : Name(val) {}
@@ -795,7 +800,7 @@ namespace OpcUa
   {
     bool GuessedIsArray = false;
     ApplyToVariantValue(Type, Value, IsValueArray, GuessedIsArray);
-    if (_array == false and GuessedIsArray == false)
+    if (_array == false && GuessedIsArray == false)
     {
       return false;
     }

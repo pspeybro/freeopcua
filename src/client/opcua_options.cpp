@@ -15,9 +15,14 @@
 #include <boost/program_options/options_description.hpp>
 #include <boost/program_options/parsers.hpp>
 #include <boost/program_options/variables_map.hpp>
+#include <iostream>
 
 #ifndef CLIENT_CONFIG_PATH
-#define CLIENT_CONFIG_PATH "/etc/opcua/client"
+	#ifdef _WIN32
+		#define CLIENT_CONFIG_PATH "C:\TEMP\client"
+	#else
+		#define CLIENT_CONFIG_PATH "/etc/opcua/client"
+	#endif
 #endif
 
 namespace

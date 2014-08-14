@@ -21,6 +21,7 @@
 #include <opc/ua/server.h>
 
 #include <stdexcept>
+#include <iostream>
 
 namespace
 {

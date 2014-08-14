@@ -15,7 +15,7 @@
 #include <algorithm>
 #include <stdexcept>
 #include <sstream>
-#include <sys/time.h>
+//#include <sys/time.h>
 #include <chrono>
 
 namespace OpcUa
@@ -129,14 +129,14 @@ namespace OpcUa
 
   } // namespace Binary
 
-  DateTime ToDateTime(time_t t, unsigned usec)
+  /*DateTime ToDateTime(time_t t, unsigned usec)
   {
     const int64_t secsFrom1600To1970 = 11676096000LL;
     int64_t t1 = t + secsFrom1600To1970;
     t1 = t1 * 10000000LL;
     t1 += usec * 10;
     return DateTime(t1);
-  }
+  }*/
 
   DateTime ToDateTime(long long usec)
   {

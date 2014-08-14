@@ -21,6 +21,11 @@
 
 #include <stdexcept>
 #include <cstring>
+//#if (_MSC_VER == 1800)
+// ... Do VC12/Visual Studio 2013 specific stuff
+//VS2013 to make sure std::min and std::max are available, is it a problem to add this include for linux?
+#include <algorithm>
+//#endif
 
 namespace OpcUa
 {
