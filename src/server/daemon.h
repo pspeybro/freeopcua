@@ -9,6 +9,7 @@
 ///
 
 #include <opc/common/class_pointers.h>
+#include <string>
 
 namespace OpcUa
 {

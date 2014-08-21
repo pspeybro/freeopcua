@@ -63,19 +63,19 @@
     <ClCompile Include="src\core\common\addons_core\dynamic_addon_factory.cpp">
       <Filter>Source Files\common\addons_core</Filter>
     </ClCompile>
-    <ClCompile Include="src\core\common\addons_core\dynamic_library.cpp">
-      <Filter>Source Files\common\addons_core</Filter>
-    </ClCompile>
     <ClCompile Include="src\core\common\addons_core\errors_addon_manager.cpp">
       <Filter>Source Files\common\addons_core</Filter>
     </ClCompile>
+    <ClCompile Include="src\core\common\addons_core\dynamic_library.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\common\addons_core\dynamic_library.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
 </Project>

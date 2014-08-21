@@ -12,6 +12,7 @@
 #include <opc/ua/protocol/binary/stream.h>
 #include <opc/ua/server.h>
 
+#include <boost/thread/locks.hpp>
 #include <boost/thread/shared_mutex.hpp>
 #include <chrono>
 #include <list>

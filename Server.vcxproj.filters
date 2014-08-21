@@ -21,9 +21,6 @@
     <ClCompile Include="src\server\address_space_internal.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\server\daemon.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\server\endpoints_parameters.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -84,12 +81,12 @@
     <ClCompile Include="src\server\xml_address_space_loader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\server\daemon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\server\address_space_addon.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\server\daemon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\server\endpoints_parameters.h">
@@ -111,6 +108,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\server\xml_processor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\server\daemon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

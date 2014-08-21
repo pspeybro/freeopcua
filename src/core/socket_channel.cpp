@@ -15,10 +15,14 @@
 #include <iostream>
 #include <stdexcept>
 #include <string.h>
+#ifdef _WIN32
+#include <WinSock2.h>
+#define SHUT_RDWR 2
+#else
 #include <sys/socket.h>
-
-#include <sys/types.h>
 #include <unistd.h>
+#endif
+#include <sys/types.h>
 
 OpcUa::SocketChannel::SocketChannel(int sock)
   : Socket(sock)
@@ -31,7 +35,11 @@ OpcUa::SocketChannel::SocketChannel(int sock)
 
 OpcUa::SocketChannel::~SocketChannel()
 {
+#ifdef _WIN32
+  int error = closesocket(Socket);
+#else
   int error = close(Socket);
+#endif
   if (error < 0)
   {
     std::cerr << "Failed to close socket connection. " << strerror(errno) << std::endl;

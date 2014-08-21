@@ -17,8 +17,9 @@
 #include <opc/ua/node.h>
 #include <opc/ua/subscription.h>
 #include <opc/ua/server/opcuaserver.h>
+#ifndef _WIN32
 #include "src/server/daemon.h"
-
+#endif
 
 
 

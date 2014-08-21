@@ -16,8 +16,13 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <errno.h>
+#ifdef _WIN32
+#include <WinSock2.h>
+#else
 #include <unistd.h>
 #include <syslog.h>
+#endif
+
 #include <string.h>
 
 #include <mutex>
@@ -54,6 +59,7 @@ namespace OpcUa
 
   void Daemon::Daemonize(const std::string& logFile)
   {
+#ifndef _WIN32
     pid_t pid, sid;
 
     pid = fork();
@@ -96,6 +102,9 @@ namespace OpcUa
       dup2(fileno(tmp), STDOUT_FILENO);
       dup2(fileno(tmp), STDERR_FILENO);
     }
+#else
+	  //not implemented
+#endif
   }
 
   void Daemon::WaitForTerminate()
@@ -110,11 +119,12 @@ namespace OpcUa
     {
       std::cout << "unable to set SIGINT handler" << std::endl;
     }
+#ifndef _WIN32
     if (signal(SIGSTOP, TerminateSignal) == SIG_ERR)
     {
       std::cout << "unable to set SIGSTOP handler" << std::endl;
     }
-
+#endif
     std::condition_variable event;
     ExitEvent = & event;
     event.wait(lock);

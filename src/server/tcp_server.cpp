@@ -12,18 +12,26 @@
 #include <opc/ua/server/tcp_server.h>
 #include <opc/ua/socket_channel.h>
 
+#ifdef _WIN32
+#include <WinSock2.h>
+#define SHUT_RDWR 2
+#else
 #include <arpa/inet.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <sys/socket.h>
+#include <unistd.h>
+#endif
 #include <errno.h>
 #include <iostream>
 #include <map>
 #include <mutex>
-#include <netdb.h>
-#include <netinet/in.h>
+
 #include <stdexcept>
 #include <string.h>
-#include <sys/socket.h>
+
 #include <sys/types.h>
-#include <unistd.h>
+
 
 namespace
 {
@@ -41,7 +49,11 @@ namespace
 
     ~SocketHolder()
     {
-      if (close(Socket) < 0)
+#ifdef _WIN32
+      if (closesocket(Socket) < 0)
+#else
+	  if (close(Socket) < 0)
+#endif
       {
         std::cerr << "Unable to close server socket." << strerror(errno) << std::endl;
       }

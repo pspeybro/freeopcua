@@ -48,7 +48,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ObjectFileName>$(IntDir)\Client.obj\</ObjectFileName>
-      <AdditionalIncludeDirectories>C:\local\boost_1_56_0\;$(SolutionDir)\include;$(SolutionDir)\packages\iconv\include;$(SolutionDir)\packages\libxml2.2.7.8.7\build\native\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\boost_1_56_0\;$(SolutionDir)\include;$(SolutionDir)\packages\iconv\include;$(SolutionDir)\packages\libxml2.2.7.8.7\build\native\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)\Client.obj\</AssemblerListingLocation>
       <XMLDocumentationFileName>$(IntDir)\Client.obj\</XMLDocumentationFileName>
     </ClCompile>

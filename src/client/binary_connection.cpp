@@ -12,7 +12,11 @@
 #include <opc/ua/errors.h>
 #include <opc/ua/socket_channel.h>
 
+#ifdef _WIN32
+#include <WinSock2.h>
+#else
 #include <arpa/inet.h>
+#endif
 #include <errno.h>
 #include <iostream>
 #include <netdb.h>

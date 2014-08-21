@@ -16,8 +16,10 @@
 
 #include <iostream>
 #include <stdexcept>
+#ifdef _WIN32
+#else
 #include <unistd.h>
-
+#endif
 
 using namespace OpcUa;
 
